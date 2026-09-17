@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07130f">
+<title>Dynaframe Theme Wash</title>
+<style>
+:root{--ms:420ms;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:#05060a}body{min-height:100svh}
+#app,.clone{min-height:100svh;color:var(--text);background:var(--a1),var(--a2),linear-gradient(180deg,var(--top),var(--bot));position:relative}
+[data-theme=forest]{--top:#07130f;--bot:#153521;--head:rgba(2,17,12,.94);--panel:rgba(12,71,47,.62);--panel2:rgba(11,42,29,.78);--line:rgba(185,224,104,.3);--text:#f7f7ef;--muted:#d1ddce;--accent:#acd84e;--accent2:#75a431;--ink:#102008;--a1:radial-gradient(circle at 10% 15%,rgba(173,214,84,.29),transparent 34%);--a2:radial-gradient(circle at 85% 42%,rgba(48,111,64,.42),transparent 40%);--title:system-ui}
+[data-theme=witch]{--top:#060510;--bot:#170b27;--head:rgba(5,4,14,.96);--panel:rgba(45,20,65,.69);--panel2:rgba(24,15,38,.82);--line:rgba(218,170,109,.26);--text:#f5eddd;--muted:#cabed0;--accent:#9c39df;--accent2:#6621b0;--ink:white;--a1:radial-gradient(circle at 10% 15%,rgba(139,42,208,.34),transparent 36%);--a2:radial-gradient(circle at 85% 42%,rgba(76,29,119,.4),transparent 42%);--title:Georgia,serif}
+.shell{max-width:760px;margin:auto;min-height:100svh;padding-bottom:88px}
+header{height:120px;padding:max(20px,env(safe-area-inset-top)) 22px 18px;display:flex;align-items:flex-end;gap:16px;background:var(--head);position:sticky;top:0;z-index:4;backdrop-filter:blur(20px)}
+.brand{flex:1;display:flex;align-items:center;gap:14px;min-width:0}.logo{width:47px;height:47px;position:relative}.logo:before,.logo:after{content:"";position:absolute;border:5px solid var(--accent)}.logo:before{width:20px;height:37px;left:0;top:0}.logo:after{width:26px;height:37px;right:0;bottom:0;background:var(--accent)}
+.brand span{letter-spacing:.2em;text-transform:uppercase;font-size:15px;white-space:nowrap}
+button{font:inherit;color:var(--text);-webkit-tap-highlight-color:transparent}.menu,.icon,.ctrl,.theme{border:1px solid var(--line);background:rgba(0,0,0,.13);border-radius:15px}
+.menu{width:58px;height:54px;font-size:27px}.content{padding:27px 22px}.title{display:flex;align-items:center;gap:13px}.title .icon{width:48px;height:48px;display:grid;place-items:center;color:var(--accent);font-size:23px}.title h1{font:700 clamp(34px,10vw,48px)/1 var(--title);margin:0;letter-spacing:-.03em}
+.card{margin-top:78px;border-radius:24px;overflow:hidden;background:var(--panel2);box-shadow:0 20px 50px rgba(0,0,0,.35);position:relative}.info{position:absolute;right:22px;top:-55px;width:54px;height:54px;font:italic 700 22px Georgia}
+.art{aspect-ratio:1.35;background:linear-gradient(#8dbcd7 0 53%,#628d97 53% 72%,#968e78 72%);position:relative;overflow:hidden}.art:before{content:"";position:absolute;left:-5%;right:-5%;top:56%;height:12px;border-radius:50%;background:rgba(255,255,255,.72);box-shadow:0 28px 0 rgba(255,255,255,.45)}.art:after{content:"";position:absolute;right:-4%;top:0;width:22%;height:70%;background:#40544c;clip-path:polygon(35% 0,100% 0,100% 100%,0 100%,24% 60%)}
+.notice{min-height:115px;padding:23px 25px;background:rgba(6,18,33,.84);display:flex;align-items:center;gap:17px;font-size:clamp(18px,5vw,27px);font-weight:700;line-height:1.35}.moon{color:#dfb85c;font-size:28px}.progress{height:8px;background:rgba(255,255,255,.11);border-radius:20px;margin:12px 0 18px;overflow:hidden}.progress:before{content:"";display:block;height:100%;width:10px;background:var(--accent);box-shadow:0 0 14px var(--accent)}
+.controls{padding:18px;border:1px solid var(--line);border-radius:24px;background:var(--panel);backdrop-filter:blur(20px)}.row{display:grid;grid-template-columns:repeat(6,1fr);gap:9px}.ctrl{height:64px;font-size:20px}.ctrl.primary{background:linear-gradient(145deg,var(--accent),var(--accent2));color:var(--ink);border-color:transparent;box-shadow:0 9px 22px color-mix(in srgb,var(--accent) 28%,transparent)}
+.volume{margin-top:17px;border:1px solid var(--line);border-radius:999px;padding:12px 15px;display:grid;grid-template-columns:45px 1fr 50px;align-items:center;gap:10px}.volume .icon{height:44px;width:44px;display:grid;place-items:center;border-radius:50%}.volume input{width:100%;accent-color:var(--accent)}
+.lab{margin-top:16px;padding:14px;border:1px solid var(--line);border-radius:17px;background:rgba(0,0,0,.1)}.labtop{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:10px}.themes{display:grid;grid-template-columns:1fr 1fr;gap:9px}.theme{padding:13px 9px;font-weight:700}.theme[aria-pressed=true]{background:var(--panel2);box-shadow:inset 0 0 0 1px var(--accent)}
+footer{position:fixed;z-index:5;left:50%;bottom:0;transform:translateX(-50%);width:min(100%,760px);padding:10px 22px max(14px,env(safe-area-inset-bottom));background:var(--head);text-align:center;backdrop-filter:blur(20px)}footer span{display:inline-block;padding:10px 25px;border:1px solid var(--line);border-radius:999px}
+.drawerShade{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:8;opacity:0;pointer-events:none;transition:.2s}.drawer{position:fixed;z-index:9;right:0;top:0;bottom:0;width:min(86vw,350px);padding:max(28px,env(safe-area-inset-top)) 20px 24px;background:var(--panel2);border-left:1px solid var(--line);transform:translateX(105%);transition:.22s;backdrop-filter:blur(25px)}.drawer.open{transform:translateX(0)}.drawerShade.open{opacity:1;pointer-events:auto}.drawer h2{margin:16px 0 7px}.drawer p{color:var(--muted);line-height:1.45}.speed{margin-top:20px;border:1px solid var(--line);border-radius:16px;padding:14px}.speed label{display:flex;justify-content:space-between;font-size:14px}.speed input{width:100%;margin-top:10px;accent-color:var(--accent)}
+.clone{position:fixed;inset:0;z-index:99;pointer-events:none;overflow:hidden;clip-path:polygon(-18% 0,-2% 0,-30% 100%,-46% 100%);animation:wash var(--ms) cubic-bezier(.28,.8,.26,1) forwards}.clone .drawer,.clone .drawerShade{display:none}.rim{position:fixed;top:-30vh;left:-20vw;width:100px;height:170vh;background:linear-gradient(90deg,transparent,rgba(255,255,255,.18),transparent);filter:blur(12px);transform:rotate(18deg) translateX(-30vw);animation:rim var(--ms) cubic-bezier(.28,.8,.26,1) forwards;mix-blend-mode:screen}
+@keyframes wash{to{clip-path:polygon(116% 0,133% 0,106% 100%,89% 100%)}}@keyframes rim{to{transform:rotate(18deg) translateX(155vw);opacity:0}}
+@media(max-width:380px){.content{padding-left:15px;padding-right:15px}.row{gap:6px}.ctrl{height:56px}.brand span{letter-spacing:.14em}}
+</style>
+</head>
+<body>
+<main id="app" data-theme="forest"><div class="shell">
+<header><div class="brand"><div class="logo"></div><span>Dynaframe™</span></div><button class="menu" id="menu">☰</button></header>
+<section class="content">
+<div class="title"><div class="icon">▣</div><h1>Now Playing</h1></div>
+<div class="card"><button class="icon info">i</button><div class="art"></div><div class="notice"><span class="moon">☾</span><span>Playlist is disabled due to the screen being off</span></div></div>
+<div class="progress"></div>
+<div class="controls">
+<div class="row"><button class="ctrl">↝</button><button class="ctrl">|◀</button><button class="ctrl primary">Ⅱ</button><button class="ctrl">▶|</button><button class="ctrl">▱</button><button class="ctrl">⚙</button></div>
+<div class="volume"><div class="icon">◖))</div><input id="vol" type="range" min="0" max="100" value="53"><span><b id="vv">53</b>%</span></div>
+<div class="lab"><div class="labtop"><span>Theme transition test</span><span>diagonal wash</span></div><div class="themes"><button class="theme" data-theme-btn="forest" aria-pressed="true">🌲 Forest</button><button class="theme" data-theme-btn="witch" aria-pressed="false">✦ Witchy</button></div></div>
+</div></section>
+<footer><span>taiji.local</span></footer>
+<div class="drawerShade" id="shade"></div><aside class="drawer" id="drawer"><button class="menu" id="close">×</button><h2>Theme Lab</h2><p>Switch themes and adjust the diagonal wash speed.</p><div class="themes"><button class="theme" data-theme-btn="forest">🌲 Forest</button><button class="theme" data-theme-btn="witch">✦ Witchy</button></div><div class="speed"><label><span>Wash speed</span><b><span id="sv">420</span> ms</b></label><input id="speed" type="range" min="300" max="500" step="10" value="420"></div></aside>
+</div></main>
+<script>
+const app=document.querySelector("#app"),root=document.documentElement,drawer=document.querySelector("#drawer"),shade=document.querySelector("#shade");let busy=false;
+function buttons(t){document.querySelectorAll("[data-theme-btn]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.themeBtn===t))}
+function change(t){if(busy||app.dataset.theme===t)return;busy=true;const c=app.cloneNode(true);c.removeAttribute("id");c.classList.add("clone");c.dataset.theme=t;c.setAttribute("aria-hidden","true");c.querySelectorAll("[id]").forEach(e=>e.removeAttribute("id"));const r=document.createElement("div");r.className="rim";c.append(r);document.body.append(c);c.addEventListener("animationend",e=>{if(e.target!==c||e.animationName!=="wash")return;app.dataset.theme=t;buttons(t);document.querySelector('meta[name="theme-color"]').content=t==="forest"?"#07130f":"#060510";c.remove();busy=false})}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-theme-btn]");if(b&&!b.closest(".clone"))change(b.dataset.themeBtn)});
+document.querySelector("#menu").onclick=()=>{drawer.classList.add("open");shade.classList.add("open")};function close(){drawer.classList.remove("open");shade.classList.remove("open")}document.querySelector("#close").onclick=close;shade.onclick=close;
+document.querySelector("#vol").oninput=e=>document.querySelector("#vv").textContent=e.target.value;document.querySelector("#speed").oninput=e=>{root.style.setProperty("--ms",e.target.value+"ms");document.querySelector("#sv").textContent=e.target.value};
+</script>
+</body></html>
